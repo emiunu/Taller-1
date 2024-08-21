@@ -69,8 +69,8 @@ public class juegoCartas {
     public static void resultado(String [][] cartasJugadorUno, String[][] cartasJugadorDos){
         int puntajeJugadorUno = puntajeJugador(cartasJugadorUno);
         int puntajeJugadorDos = puntajeJugador(cartasJugadorDos);
-        System.out.println(puntajeJugadorUno);
-        System.out.println(puntajeJugadorDos);
+        System.out.println("Jugador uno :" + puntajeJugadorUno);
+        System.out.println("Jugador dos :" + puntajeJugadorDos);
         if (puntajeJugadorUno > 20 && puntajeJugadorDos > 20){
             System.out.println("Empate");
         } else if (puntajeJugadorUno == puntajeJugadorDos){
