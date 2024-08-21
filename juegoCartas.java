@@ -4,8 +4,9 @@ public class juegoCartas {
     public static void main(String[] args) {
         String [][] cartas = crearMatrizCartas();
         inicializarCartasJuego(cartas);
+
         }
-    }
+
     public static String[][] crearMatrizCartas(){
         String [][] matrizVacia = new String[12][2];
         return matrizVacia;
@@ -36,4 +37,21 @@ public class juegoCartas {
         agregarCartas("Kayser","10", matrizVacia);
     }
 
+    public static String[][] obtenerCartas(String [][] cartas) {
+        String [][] cartasJugador = new String[3][2];
+        Random numerosAzar = new Random();
+        int primeraCarta = numerosAzar.nextInt(cartas.length);
+        int segundaCarta = numerosAzar.nextInt(cartas.length);
+        int terceraCarta = numerosAzar.nextInt(cartas.length);
+        cartasJugador[0][0] = cartas[primeraCarta][0];
+        cartasJugador[0][1] = cartas[primeraCarta][1];
+        cartasJugador[1][0] = cartas[segundaCarta][0];
+        cartasJugador[1][1] = cartas[segundaCarta][1];
+        cartasJugador[2][0] = cartas[terceraCarta][0];
+        cartasJugador[2][1] = cartas[terceraCarta][1];
+        return cartasJugador;
+
+
+
+    }
 }
