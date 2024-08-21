@@ -4,7 +4,7 @@ public class juegoCartas {
     public static void main(String[] args) {
         String [][] cartas = crearMatrizCartas();
         inicializarCartasJuego(cartas);
-
+        jugar(cartas);
         }
 
     public static String[][] crearMatrizCartas(){
@@ -38,7 +38,7 @@ public class juegoCartas {
     }
 
     public static String[][] obtenerCartas(String [][] cartas) {
-        String [][] cartasJugador = new String[3][2];
+        String[][] cartasJugador = new String[3][2];
         Random numerosAzar = new Random();
         int primeraCarta = numerosAzar.nextInt(cartas.length);
         int segundaCarta = numerosAzar.nextInt(cartas.length);
@@ -50,8 +50,41 @@ public class juegoCartas {
         cartasJugador[2][0] = cartas[terceraCarta][0];
         cartasJugador[2][1] = cartas[terceraCarta][1];
         return cartasJugador;
-
-
-
     }
+
+    public static void jugar(String [][] cartas){
+        String [][] cartasJugadorUno = obtenerCartas(cartas);
+        String [][] cartasJugadorDos = obtenerCartas(cartas);
+        resultado(cartasJugadorUno,cartasJugadorDos);
+    }
+
+    public static int puntajeJugador(String [][] cartasJugador){
+        int valorUno = Integer.parseInt(cartasJugador[0][1]);
+        int valorDos = Integer.parseInt(cartasJugador[1][1]);
+        int valorTres = Integer.parseInt(cartasJugador[2][1]);
+        int puntaje = valorUno + valorDos + valorTres;
+        return puntaje;
+    }
+
+    public static void resultado(String [][] cartasJugadorUno, String[][] cartasJugadorDos){
+        int puntajeJugadorUno = puntajeJugador(cartasJugadorUno);
+        int puntajeJugadorDos = puntajeJugador(cartasJugadorDos);
+        System.out.println(puntajeJugadorUno);
+        System.out.println(puntajeJugadorDos);
+        if (puntajeJugadorUno > 20 && puntajeJugadorDos > 20){
+            System.out.println("Empate");
+        } else if (puntajeJugadorUno == puntajeJugadorDos){
+            System.out.println("Empate");
+        } else if (puntajeJugadorUno <= 20 && puntajeJugadorDos < puntajeJugadorUno){
+            System.out.println("Gana jugador uno");
+        } else if (puntajeJugadorDos <= 20 && puntajeJugadorUno < puntajeJugadorDos){
+            System.out.println("Gana jugador dos");
+        } else if (puntajeJugadorUno > 20 && puntajeJugadorDos < 20){
+            System.out.println("Gana jugador dos");
+        } else if (puntajeJugadorDos > 20 && puntajeJugadorUno < 20){
+            System.out.println("Gana jugador uno");
+        }
+    }
+
+
 }
